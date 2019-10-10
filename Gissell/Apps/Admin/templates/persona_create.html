@@ -1,0 +1,67 @@
+{% extends 'Admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Persona</a></li>
+<li><span>Registrar Persona</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h4 class="header-title">Registrar Persona</h4>
+            <form class="needs-validation" novalidate="">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe el nombre" required="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Escribe el apellido" required="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationCustom02">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="validationCustom02" placeholder="Last name" required="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationCustom03">Telefono</label>
+                        <input type="text" class="form-control" id="validationCustom03" placeholder="City" required="">
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationCustom04">Dirección</label>
+                        <input type="text" class="form-control" id="validationCustom04" placeholder="State" required="">
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationCustom05">Nit</label>
+                        <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required="">
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}   
