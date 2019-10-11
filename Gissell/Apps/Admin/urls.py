@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from .views import IndexView, PersonaLista, PersonaCreate
+from .views import IndexView, PersonaLista, PersonaCreate, PersonaActualizar, PersonaEliminar
 
 app_name = 'Admin'
 
@@ -23,4 +23,6 @@ urlpatterns = [
     path('', IndexView.as_view(), name='Home'),
     path('lista-persona', PersonaLista.as_view(), name='persona_list'),
     path('crear-persona', PersonaCreate.as_view(), name='persona_create'),
+    path('actualizar-persona/<int:pk>/', PersonaActualizar.as_view(), name='persona_update'),
+    path('eliminar-persona/<int:pk>/', PersonaEliminar.as_view(), name='persona_delete'),
 ]

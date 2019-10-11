@@ -1,0 +1,61 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Personas</a></li>
+<li><span>Actualizar Persona</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Progress Table start -->
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Actualizar datos de personas</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Nombre</label>
+                        {{ form.nombre }}
+                        <div class="valid-feedback">
+                            ¡Se ve bien!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="apellido">Apellido</label>
+                        {{ form.apellido }}
+                        <div class="valid-feedback">
+                            ¡Se ve bien!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                        {{ form.fecha_nacimiento }}
+                        <div class="valid-feedback">
+                            ¡Se ve bien!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="telefono">Telefono</label>
+                        {{ form.telefono }}
+                        <div class="invalid-feedback">
+                            Por favor proporcione un número de telefono
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="direccion">Dirección</label>
+                        {{ form.direccion }}
+                        <div class="invalid-feedback">
+                            Por favor proporcione una dirección
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Progress Table end -->
+{% endblock %}   
