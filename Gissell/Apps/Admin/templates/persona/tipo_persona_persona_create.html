@@ -7,6 +7,12 @@
 <!-- Server side start -->
 <div class="col-12">
     <div class="card mt-5">
+        {% if 'register' in request.GET %}
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>¡Exitoso!</strong>Persona registrada con exito
+        </div>
+        {% endif %}
         <div class="card-body">
             <h4 class="header-title">Registrar Tipo Persona</h4>
             <form class="needs-validation" novalidate="" method="POST">
@@ -32,5 +38,9 @@
         </div>
     </div>
 </div>
+
+<script>
+
+</script>
 <!-- Server side end -->
 {% endblock %}  

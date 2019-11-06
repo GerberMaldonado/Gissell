@@ -13,25 +13,26 @@
             <h4 class="header-title">Registrar Persona</h4>
             <form class="needs-validation" novalidate="" method="POST">
                 {% csrf_token %}
+                
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe el nombre" required="">
-                        <div class="valid-feedback">
+                        <div class="valid-tooltip">
                             ¡Se ve bien!
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="apellido">Apellido</label>
                         <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Escribe el apellido" required="">
-                        <div class="valid-feedback">
+                        <div class="valid-tooltip">
                             ¡Se ve bien!
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required="" value="2018-08-22" min="2019-12-01" max="2019-12-31">
-                        <div class="valid-feedback">
+                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required="" min="1900-01-01" max="2019-11-06">
+                        <div class="valid-tooltip">
                             ¡Se ve bien!
                         </div>
                     </div>
@@ -39,26 +40,26 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="telefono">Telefono</label>
-                        <input type="phone" class="form-control" id="telefono" name="telefono" placeholder="Escribe número de telefono" required="">
-                        <div class="invalid-feedback">
+                        <input type="tel" class="form-control validar" id="telefono" name="telefono" placeholder="Escribe número de telefono" pattern=".{3,}">
+                        <div class="invalid-tooltip">
                             Por favor proporcione un número de telefono
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="direccion">Dirección</label>
                         <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Escribe la dirección" required="">
-                        <div class="invalid-feedback">
+                        <div class="valid-tooltip">
                             Por favor proporcione una dirección
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="direccion">Tipo Persona</label>
-                        {{ form.tipo_persona_id }}
-                        <div class="invalid-feedback">
-                            Por favor proporcione una dirección
+                        <div class="valid-tooltip">
+                            
                         </div>
                     </div>
                 </div>
+                {{ form.as_p }}
                 <button class="btn btn-primary" type="submit">Registrar</button>
             </form>
         </div>

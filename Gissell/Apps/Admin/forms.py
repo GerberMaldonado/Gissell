@@ -11,7 +11,7 @@ class PersonaForm(forms.ModelForm):
 		'fecha_nacimiento': forms.TextInput(attrs={'class': 'form-control', 'type': 'date'}),
 		'telefono': forms.TextInput(attrs={'class': 'form-control', 'type': 'phone'}),
 		'direccion': forms.TextInput(attrs={'class': 'form-control', 'type': 'text'}),
-		}
+		}		
 
 class TipoPersonaForm(forms.ModelForm):
 	class Meta:
