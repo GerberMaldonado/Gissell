@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView
-from .models import Persona
-from .forms import PersonaForm
+from .models import Persona, TipoPersona, TipoPersonaPersona
+from .forms import PersonaForm, TipoPersonaForm, TipoPersonaPersonaForm
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 # Create your views here.
@@ -21,9 +21,10 @@ class PersonaLista(StaffRequiredMixin, ListView):
 	model = Persona
 
 class PersonaCreate(StaffRequiredMixin, CreateView):
-	template_name = 'persona/persona_create.html'
-	form_class = PersonaForm
-	success_url = reverse_lazy('Admin:persona_list')
+    template_name = 'persona/persona_create.html'	    
+    form_class = TipoPersonaPersonaForm
+    second_form_class = PersonaForm
+    success_url = reverse_lazy('Admin:persona_list')
 
 class PersonaActualizar(StaffRequiredMixin, UpdateView):
     template_name = 'persona/persona_update.html'
@@ -36,3 +37,52 @@ class PersonaEliminar(StaffRequiredMixin, DeleteView):
     model = Persona
     form_class = PersonaForm    
     success_url = reverse_lazy('Admin:persona_list')
+
+# Vistas para el CRUD de Tipo Persona
+class TipoPersonaLista(StaffRequiredMixin, ListView):
+	template_name = 'persona/tipo_persona_list.html'
+	model = TipoPersona
+
+class TipoPersonaCreate(StaffRequiredMixin, CreateView):
+	template_name = 'persona/tipo_persona_create.html'
+	form_class = TipoPersonaForm
+	success_url = reverse_lazy('Admin:tipo_persona_list')
+
+class TipoPersonaActualizar(StaffRequiredMixin, UpdateView):
+    template_name = 'persona/tipo_persona_update.html'
+    model = TipoPersona
+    form_class = TipoPersonaForm
+    success_url = reverse_lazy('Admin:tipo_persona_list')
+
+class TipoPersonaEliminar(StaffRequiredMixin, DeleteView):
+    template_name='persona/tipo_persona_delete.html'	
+    model = TipoPersona
+    form_class = TipoPersonaForm    
+    success_url = reverse_lazy('Admin:tipo_persona_list')
+
+# Vistas para el CRUD de Tipo Persona Persona
+class TipoPersonaPersonaLista(StaffRequiredMixin, ListView):
+	template_name = 'persona/tipo_persona_persona_list.html'
+	model = TipoPersonaPersona
+
+class TipoPersonaPersonaCreate(StaffRequiredMixin, CreateView):
+	template_name = 'persona/tipo_persona_persona_create.html'
+	form_class = TipoPersonaPersonaForm
+	success_url = reverse_lazy('Admin:tipo_persona_persona_list')
+
+class TipoPersonaPersonaActualizar(StaffRequiredMixin, UpdateView):
+    template_name = 'persona/tipo_persona_persona_update.html'
+    model = TipoPersonaPersona
+    form_class = TipoPersonaPersonaForm
+    success_url = reverse_lazy('Admin:tipo_persona_persona_list')
+
+class TipoPersonaPersonaEliminar(StaffRequiredMixin, DeleteView):
+    template_name='persona/tipo_persona_persona_delete.html'	
+    model = TipoPersonaPersona
+    form_class = TipoPersonaPersonaForm    
+    success_url = reverse_lazy('Admin:tipo_persona_persona_list')
+
+# Vistas para el CRUD de Persona
+class PersonaListarEnPersona(StaffRequiredMixin, ListView):
+	template_name = 'persona/persona_list.html'
+	model = Persona    

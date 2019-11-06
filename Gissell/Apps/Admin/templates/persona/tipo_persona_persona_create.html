@@ -1,0 +1,36 @@
+{% extends 'admin/admin.html' %}
+{% block header %}
+<li><a href="#">Crear Tipo Personas</a></li>
+<li><span>Crear Tipo Persona</span></li>
+{% endblock %}
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h4 class="header-title">Registrar Tipo Persona</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Id persona</label>
+                        {{ form.persona_id}}
+                        <div class="valid-feedback">
+                            ¡Se ve bien!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Id Tipo Persona</label>
+                        {{ form.tipo_persona_id}}
+                        <div class="valid-feedback">
+                            ¡Se ve bien!
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}  

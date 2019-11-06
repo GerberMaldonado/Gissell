@@ -16,9 +16,14 @@ class Persona(models.Model):
 class TipoPersona(models.Model):
     tipo_persona = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.tipo_persona    
+
 class TipoPersonaPersona(models.Model):
     persona_id = models.ForeignKey(Persona, on_delete=models.CASCADE)
     tipo_persona_id = models.ForeignKey(TipoPersona, on_delete=models.CASCADE)
+    def __str__(self):
+        return '%s %s '% (self.persona_id, self.tipo_persona_id)    
 
 class TipoTerapia(models.Model):
     tipo_terapia = models.CharField(max_length=50)
