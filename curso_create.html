@@ -1,0 +1,36 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Curso</a></li>
+<li><span>Registrar Cursos</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h4 class="header-title">Registrar Cursos</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="curso">Nombre</label>
+                        <input type="text" maxlength= "30" class="form-control" id="curso" name="curso" placeholder="Escribe el nombre" required="">
+                        <div class="valid-feedback">
+                            ¡Se ve bien!
+                        </div>
+                        <div class="invalid-feedback">
+                            ¡Campo vacío!
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}   
