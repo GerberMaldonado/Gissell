@@ -1,0 +1,31 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Donaciones</a></li>
+<li><span>Registrar tipo donación</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h4 class="header-title">Registrar tipo donación</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}                
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Tipo Donación</label>
+                        <input type="text" class="form-control" id="tipo_donacion" name="tipo_donacion" placeholder="Escribe tipo donacion" required="">
+                        <div class="invalid-tooltip">
+                            Ingresa donación
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar (1/2)</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}   

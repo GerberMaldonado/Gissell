@@ -1,0 +1,25 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Asignaciones</a></li>
+<li><span>Eliminar asignación</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Progress Table start -->
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Eliminar datos de asignación</h4>
+			<div class="card-block">
+                <form action="" method="post">{% csrf_token %}
+                    <p>¿Estás seguro de que quieres borrar <b>"{{ object }}"</b>?</p>
+                    <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
+                    <a class= "btn btn-default" href="{% url 'Admin:asignacion_list'%}">Cancelar</a>		
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Progress Table end -->
+{% endblock %}   

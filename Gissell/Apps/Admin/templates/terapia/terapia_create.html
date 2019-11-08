@@ -1,0 +1,54 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Terapias</a></li>
+<li><span>Registrar terapia</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h4 class="header-title">Registrar terapia</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}                
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Tipo Terapia</label>
+                        <input type="text" class="form-control" id="tipo_terapia" name="tipo_terapia" placeholder="Escribe el tipo de terapia" required="">
+                        <div class="invalid-tooltip">
+                            Ingresa tipo
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="apellido">Sesion</label>
+                        <input type="text" class="form-control" id="sesiones" name="sesiones" placeholder="Escribe la sesion" required="">
+                        <div class="invalid-tooltip">
+                            Ingresa sesion
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="fecha_nacimiento">Avances</label>
+                        <input type="text" class="form-control" id="avances" name="avances" placeholder="Escribe los avances"  required="">
+                        <div class="invalid-tooltip">
+                            Ingresa los avances                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="telefono">Descripción</label>
+                        <input class="form-control" id="descripcion" name="descripcion" placeholder="Escribe una descripción" required="">
+                        <div class="invalid-tooltip">
+                            Ingresa la descripción
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar (1/2)</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}   

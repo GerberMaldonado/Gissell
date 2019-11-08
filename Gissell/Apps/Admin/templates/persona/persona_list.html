@@ -1,16 +1,57 @@
 {% extends 'admin/admin.html' %}
 
 {% block header %}
-<li><a href="#">Personas</a></li>
-<li><span>Lista Persona</span></li>
+<li><a href="{% url 'Admin:persona_list' %}">Personas</a></li>
+<li><span>Lista de personas</span></li>
 {% endblock %}
 
 {% block contenido %}
 <!-- Progress Table start -->
 <div class="col-12 mt-5">
+    {% if 'register' in request.GET %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Exitoso! </strong>Persona registrada
+    </div>
+    {% endif %}
+    {% if 'regtp' in request.GET %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Exitoso! </strong>Tipo persona registrada
+    </div>
+    {% endif %}
+    {% if 'regtpp' in request.GET %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Exitoso! </strong>Relacion entre persona y tipo persona registrada
+    </div>
+    {% endif %}
+    {% if 'regd' in request.GET %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Exitoso! </strong>Se elimino el registro
+    </div>
+    {% endif %}
+    {% if 'rega' in request.GET %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Exitoso! </strong>Se actualizo el registro
+    </div>
+    {% endif %}
     <div class="card">
-        <div class="card-body">
-            <h4 class="header-title">Datos de las personas</h4>
+        <div class="card-body">      
+            <div style="margin-bottom: 30px">                     
+                <a href="{% url 'Admin:tipo_persona_persona_create' %}">                             
+                    <button type="submit" class="btn btn-primary float-right" style="margin: 1px">Nueva relacion</button>
+                </a>
+                <a href="{% url 'Admin:persona_create' %}">                             
+                    <button type="submit" class="btn btn-danger float-right" style="margin: 1px">Nueva persona</button>
+                </a>                
+                <a href="{% url 'Admin:tipo_persona_create' %}">                             
+                    <button type="submit" class="btn btn-success float-right" style="margin: 1px">Nuevo tipo</button>
+                </a> 
+                <h4 class="header-title">Datos de las personas</h4>
+            </div>      
             <div class="single-table">
                 <div class="table-responsive">
                     <table class="table table-hover progress-table text-center">
@@ -21,6 +62,8 @@
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Telefono</th>
                                 <th scope="col">Direccion</th>
+                                <th scope="col">Creación</th>
+                                <th scope="col">Modificación</th>
                                 <th scope="col">Opciones</th>
                             </tr>
                         </thead>
@@ -32,6 +75,8 @@
                                 <td>{{ per.apellido }}</td>
                                 <td>{{ per.telefono }} </td>
                                 <td>{{ per.direccion }} </td>
+                                <td>{{ per.creacion }} </td>
+                                <td>{{ per.modificar }} </td>
                                 <td>
                                     <ul class="d-flex justify-content-center">
                                         <li class="mr-3"><a href="{% url 'Admin:persona_update' per.id %}" class="text-secondary"><i class="fa fa-edit"></i></a></li>

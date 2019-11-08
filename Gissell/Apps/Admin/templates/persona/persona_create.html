@@ -1,66 +1,64 @@
 {% extends 'admin/admin.html' %}
 
 {% block header %}
-<li><a href="#">Personas</a></li>
-<li><span>Registrar Persona</span></li>
+<li><a href="{% url 'Admin:persona_list' %}">Personas</a></li>
+<li><span>Registrar persona</span></li>
 {% endblock %}
 
 {% block contenido %}
 <!-- Server side start -->
 <div class="col-12">
     <div class="card mt-5">
+    {% if 'regtp' in request.GET %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Exitoso! </strong>Tipo persona registrado
+    </div>
+    {% endif %}
         <div class="card-body">
             <h4 class="header-title">Registrar Persona</h4>
             <form class="needs-validation" novalidate="" method="POST">
-                {% csrf_token %}
-                
+                {% csrf_token %}                
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe el nombre" required="">
-                        <div class="valid-tooltip">
-                            ¡Se ve bien!
+                        <div class="invalid-tooltip">
+                            Ingresa un nombre
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="apellido">Apellido</label>
                         <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Escribe el apellido" required="">
-                        <div class="valid-tooltip">
-                            ¡Se ve bien!
+                        <div class="invalid-tooltip">
+                            Ingresa un apellido
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required="" min="1900-01-01" max="2019-11-06">
-                        <div class="valid-tooltip">
-                            ¡Se ve bien!
+                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required="" min="1900-01-01" max="2019-11-08">
+                        <div class="invalid-tooltip">
+                            Ingresa una fecha valida
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label for="telefono">Telefono</label>
-                        <input type="tel" class="form-control validar" id="telefono" name="telefono" placeholder="Escribe número de telefono" pattern=".{3,}">
+                        <label for="telefono">Teléfono</label>
+                        <input type="number" class="form-control validar" id="telefono" name="telefono" placeholder="Escribe número de telefono" required min="11111111" max="99999999">
                         <div class="invalid-tooltip">
-                            Por favor proporcione un número de telefono
+                            Ingresa un número valido
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="direccion">Dirección</label>
                         <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Escribe la dirección" required="">
-                        <div class="valid-tooltip">
-                            Por favor proporcione una dirección
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="direccion">Tipo Persona</label>
-                        <div class="valid-tooltip">
-                            
+                        <div class="invalid-tooltip">
+                            Ingresa una direccion
                         </div>
                     </div>
                 </div>
-                {{ form.as_p }}
-                <button class="btn btn-primary" type="submit">Registrar</button>
+                <button class="btn btn-primary" type="submit">Registrar <strong>(2/3)</strong></button>
             </form>
         </div>
     </div>

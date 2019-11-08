@@ -1,7 +1,7 @@
 {% extends 'admin/admin.html' %}
 {% block header %}
-<li><a href="#">Crear Tipo Personas</a></li>
-<li><span>Crear Tipo Persona</span></li>
+<li><a href="{% url 'Admin:persona_list' %}">Personas</a></li>
+<li><span>Registrar tipo persona</span></li>
 {% endblock %}
 {% block contenido %}
 <!-- Server side start -->
@@ -15,14 +15,14 @@
                     <div class="col-md-4 mb-3">
                         <label for="nombre">Tipo</label>
                         <input type="text" class="form-control" id="tipo_persona" name="tipo_persona" placeholder="Escribe el tipo de persona" required="">
-                        <div class="valid-feedback">
-                            ¡Se ve bien!
+                        <div class="invalid-tooltip">
+                            Ingresa un tipo persona
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                 </div>
-                <button class="btn btn-primary" type="submit">Registrar</button>
+                <button class="btn btn-primary" type="submit">Registrar (1/3)</button>
             </form>
         </div>
     </div>

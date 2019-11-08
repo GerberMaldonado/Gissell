@@ -51,11 +51,8 @@
                                 </a>
                                 <ul class="collapse">
                                     <li><a href="{% url 'Admin:persona_list' %}">Listado de personas</a></li>
-                                    <li><a href="{% url 'Admin:persona_create' %}">Registrar persona</a></li>
                                     <li><a href="{% url 'Admin:tipo_persona_list' %}">Listado de tipo personas</a></li>
-                                    <li><a href="{% url 'Admin:tipo_persona_create' %}">Registrar tipo persona</a></li>
-                                    <li><a href="{% url 'Admin:tipo_persona_persona_list' %}">Listado de tipo personas persona</a></li>
-                                    <li><a href="{% url 'Admin:tipo_persona_persona_create' %}">Registrar tipo persona persona</a></li>
+                                    <li><a href="{% url 'Admin:tipo_persona_persona_list' %}">Listado de tipo personas persona</a></li>                                
                                 </ul>
                             </li>
                             <li>
@@ -63,38 +60,41 @@
                                     <span>Terapias</span>
                                 </a>
                                 <ul class="collapse">
-                                    <li><a href="">Listado de terapias</a></li>
-                                    <li><a href="">Registrar terapia</a></li>
+                                    <li><a href="{% url 'Admin:terapia_list' %}">Listado de terapias</a></li>
+                                    <li><a href="{% url 'Admin:tipo_terapia_list' %}">Listado de tipo terapia</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href=""><i class="ti-heart"></i><span>Donaciones</span></a>
                                 <ul class="collapse">
-                                    <li><a href="">Listado de donaciones</a></li>
-                                    <li><a href="">Registrar donación</a></li>
-             
+                                    <li><a href="{% url 'Admin:donacion_list' %}">Listado de donaciones</a></li>
+                                    <li><a href="{% url 'Admin:tipo_donacion_list' %}">Listado de tipo donación</a></li>             
                                 </ul>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-book"></i><span>Cursos</span></a>
                                 <ul class="collapse">
-                                    <li><a href="">Lista de cursos</a></li>
-                                    <li><a href="">Registrar curso</a></li>
+                                    <li><a href="{% url 'Admin:curso_list' %}">Listado de Cursos</a></li>                                    
                                 </ul>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>Asignaciones</span></a>
                                 <ul class="collapse">
-                                    <li><a href="">Lista de asignaciones</a></li>
-                                    <li><a href="">Registrar asignación</a></li>
+                                    <li><a href="{% url 'Admin:asignacion_list' %}">Lista de asignaciones</a></li>                                    
+                                </ul>
+                            </li>                            
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-file-text"></i><span>Notas</span></a>
+                                <ul class="collapse">                                    
+                                    <li><a href="{% url 'Admin:nota_list' %}">Lista de Notas</a></li> 
+                                    <li><a href="{% url 'Admin:unidad_list' %}">Listado de Unidades</a></li>                                                                       
                                 </ul>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-users"></i>
                                     <span>Usuarios</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Lista de usuarios</a></li>
-                                    <li><a href="#">Registrar usuario</a></li>                                    
+                                    <li><a href="{% url 'registro:signup' %}">Registrar usuarios</a></li>                                  
                                 </ul>
                             </li>                            
                         </ul>

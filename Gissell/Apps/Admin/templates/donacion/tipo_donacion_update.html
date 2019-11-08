@@ -1,0 +1,31 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Donaciones</a></li>
+<li><span>Actualizar tipo donación</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Progress Table start -->
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Actualizar datos de tipo donacion</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Tipo donación</label>
+                        {{ form.tipo_donacion }}
+                        <div class="invalid-tooltip">
+                            Ingresa tipo donación
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Progress Table end -->
+{% endblock %}   

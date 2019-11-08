@@ -1,0 +1,54 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Terapias</a></li>
+<li><span>Actualizar terapia</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Progress Table start -->
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Actualizar datos de la terapia</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Tipo Terapia</label>
+                        {{ form.tipo_terapia }}
+                        <div class="invalid-tooltip">
+                            Ingresa tipo
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="apellido">Sesión</label>
+                        {{ form.sesiones }}
+                        <div class="invalid-tooltip">
+                            Ingresa sesion
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="fecha_nacimiento">Avances</label>
+                        {{ form.avances }}
+                        <div class="invalid-tooltip">
+                            Ingresa los avances                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="telefono">Descripción</label>
+                        {{ form.descripcion }}
+                        <div class="invalid-tooltip">
+                            Ingresa la descripción
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Progress Table end -->
+{% endblock %}   

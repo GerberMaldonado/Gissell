@@ -1,0 +1,31 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Unidades</a></li>
+<li><span>Registrar unidad</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h4 class="header-title">Registrar Unidad</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}                
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Unidad</label>
+                        {{ form.unidad }}
+                        <div class="invalid-tooltip">
+                            Ingresa nombre de la unidad
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}   

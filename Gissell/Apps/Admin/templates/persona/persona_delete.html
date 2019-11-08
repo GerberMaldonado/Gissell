@@ -1,8 +1,8 @@
 {% extends 'admin/admin.html' %}
 
 {% block header %}
-<li><a href="#">Personas</a></li>
-<li><span>Eliminar Persona</span></li>
+<li><a href="{% url 'Admin:persona_list' %}">Personas</a></li>
+<li><span>Eliminar persona</span></li>
 {% endblock %}
 
 {% block contenido %}

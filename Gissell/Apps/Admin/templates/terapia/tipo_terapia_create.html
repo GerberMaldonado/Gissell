@@ -1,0 +1,44 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Terapias</a></li>
+<li><span>Registrar tipo terapia, persona</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+        {% if 'register' in request.GET %}
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>¡Exitoso! </strong>Terapia registrada
+        </div>
+        {% endif %}
+        <div class="card-body">
+            <h4 class="header-title">Registrar tipo terapia, persona</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}                
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Terapia</label>
+                        {{ form.tipo_terapia_id }}
+                        <div class="invalid-tooltip">
+                            Ingresa tipo terapia
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="apellido">Persona</label>
+                        {{ form.tipo_persona_persona_id }}
+                        <div class="invalid-tooltip">
+                            Ingresa tipo persona
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar (2/2)</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}   

@@ -1,0 +1,51 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Donaciones</a></li>
+<li><span>Registrar Donaciones</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+        {% if 'regt' in request.GET %}
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>¡Exitoso! </strong>Tipo donación registrada
+        </div>
+        {% endif %}
+        <div class="card-body">
+            <h4 class="header-title">Registrar donación</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}                
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Cantidad</label>
+                        <input type="number" class="form-control" id="monto" name="monto" placeholder="Escribe la cantidad a donar" required="" min="1">
+                        <div class="invalid-tooltip">
+                            Ingresa un monto valido mayor a 1
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="apellido">Tipo donacion</label>
+                        {{ form.tipo_donacion_id }}
+                        <div class="invalid-tooltip">
+                            Ingresa tipo donación
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="fecha_nacimiento">Tipo Persona</label>
+                        {{ form.tipo_persona_persona_id }}
+                        <div class="invalid-tooltip">
+                            Ingresa tipo persona                            
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar (2/2)</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}   

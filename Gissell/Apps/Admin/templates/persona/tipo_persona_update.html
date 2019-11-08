@@ -1,8 +1,8 @@
 {% extends 'admin/admin.html' %}
 
 {% block header %}
-<li><a href="#">Tipo Personas</a></li>
-<li><span>Actualizar Tipo Persona</span></li>
+<li><a href="{% url 'Admin:persona_list' %}">Personas</a></li>
+<li><span>Actualizar persona, tipo persona</span></li>
 {% endblock %}
 
 {% block contenido %}
@@ -17,8 +17,8 @@
                     <div class="col-md-4 mb-3">
                         <label for="tipo_persona">Tipo</label>
                         {{ form.tipo_persona }}
-                        <div class="valid-feedback">
-                            ¡Se ve bien!
+                        <div class="invalid-tooltip">
+                            Ingresa un tipo persona
                         </div>
                     </div>                    
                 </div>

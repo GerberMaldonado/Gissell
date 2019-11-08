@@ -1,0 +1,44 @@
+{% extends 'admin/admin.html' %}
+
+{% block header %}
+<li><a href="#">Asignaciones</a></li>
+<li><span>Registrar asignación</span></li>
+{% endblock %}
+
+{% block contenido %}
+<!-- Server side start -->
+<div class="col-12">
+    <div class="card mt-5">
+    {% if 'register' in request.GET %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Exitoso! </strong>Curso registrado
+    </div>
+    {% endif %}
+        <div class="card-body">
+            <h4 class="header-title">Registrar curso asignación</h4>
+            <form class="needs-validation" novalidate="" method="POST">
+                {% csrf_token %}                
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nombre">Curso</label>
+                        {{ form.curso_id  }}
+                        <div class="invalid-tooltip">
+                            Ingresa curso
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="apellido">Persona</label>
+                        {{ form.tipo_persona_persona_id  }}
+                        <div class="invalid-tooltip">
+                            Ingresa persona
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Server side end -->
+{% endblock %}   

@@ -1,8 +1,8 @@
 {% extends 'admin/admin.html' %}
 
 {% block header %}
-<li><a href="#">Personas</a></li>
-<li><span>Actualizar Persona</span></li>
+<li><a href="{% url 'Admin:persona_list' %}">Personas</a></li>
+<li><span>Actualizar persona</span></li>
 {% endblock %}
 
 {% block contenido %}
@@ -17,22 +17,22 @@
                     <div class="col-md-4 mb-3">
                         <label for="nombre">Nombre</label>
                         {{ form.nombre }}
-                        <div class="valid-feedback">
-                            ¡Se ve bien!
+                        <div class="invalid-tooltip">
+                            Ingresa un nombre
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="apellido">Apellido</label>
                         {{ form.apellido }}
-                        <div class="valid-feedback">
-                            ¡Se ve bien!
+                        <div class="invalid-tooltip">
+                            Ingresa un apellido
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                         {{ form.fecha_nacimiento }}
-                        <div class="valid-feedback">
-                            ¡Se ve bien!
+                        <div class="invalid-tooltip">
+                            Ingresa una fecha valida
                         </div>
                     </div>
                 </div>
@@ -40,15 +40,15 @@
                     <div class="col-md-4 mb-3">
                         <label for="telefono">Telefono</label>
                         {{ form.telefono }}
-                        <div class="invalid-feedback">
-                            Por favor proporcione un número de telefono
+                        <div class="invalid-tooltip">
+                            Ingresa un número valido
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="direccion">Dirección</label>
                         {{ form.direccion }}
-                        <div class="invalid-feedback">
-                            Por favor proporcione una dirección
+                        <div class="invalid-tooltip">
+                            Ingresa una direccion valida
                         </div>
                     </div>
                 </div>
