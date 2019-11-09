@@ -1,63 +1,23 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Sign up - Gissell</title>
-    {% load static%}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{% static 'images/icon/favicon.ico' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/typography.css' %}">
-    <link rel="stylesheet" href="{% static 'css/default-css.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <style>
-    .errorlist{color:red;}
-    label{display: none;}
-    </style>
-</head>
-
-<body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- preloader area end -->
-    <!-- login area start -->
-    <div class="login-area login-bg">
-        <div class="container">
-            <div class="login-box ptb--100">
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="login-form-head">
-                        <h4>Registrar</h4>
-                        <p>Hola, registrar nuevo usuario</p>
+{% extends 'registration/base.html' %}
+{% load static %}
+{% block contenido %}
+<div class="login-area login-bg">
+    <div class="container">
+        <div class="login-box ptb--20">
+            <form method="post">
+                {% csrf_token %}
+                <div class="login-form-head">
+                    <h4>Registrar</h4>
+                    <p>Hola, registrar nuevo usuario</p>
+                </div>
+                <div class="login-form-body">
+                    {{ form.as_p }}
+                    <div class="submit-btn-area">
+                        <button id="form_submit" type="submit">Registrar <i class="ti-arrow-right"></i></button>
                     </div>
-                    <div class="login-form-body">
-                        {{ form.as_p }}
-                        <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Registrar <i class="ti-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
-    <!-- login area end -->
-    <!-- jquery latest version -->
-    <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
-    <!-- bootstrap 4 js -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/metisMenu.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slimscroll.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
-    <!-- others plugins -->
-    <script src="{% static 'js/scripts.js' %}"></script>
-</body>
-
-</html>
+</div>
+{% endblock %}

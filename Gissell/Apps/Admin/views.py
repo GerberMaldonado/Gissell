@@ -1,6 +1,12 @@
-from io import BytesIO
+import io
 from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import A4
+from reportlab.lib.pagesizes import A4, letter
+from reportlab.lib.units import cm
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import Paragraph, Table, TableStyle, Image, SimpleDocTemplate
+from reportlab.lib.enums import TA_CENTER
+from reportlab.lib import colors
+
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView, View
 from .models import Persona, TipoPersona, TipoPersonaPersona, TipoTerapia, Terapia, Donacion, TipoDonacion, Curso, \
@@ -290,6 +296,74 @@ class UnidadEliminar(DeleteView):
     def get_success_url(self):
         return reverse_lazy('Admin:unidad_list') + '?regd'
 
-class report(View):
-    pdf = canvas.Canvas("Hola")
-    pdf.save()
+def generar_pdf_personas(request):
+    pdf_name = "Personas.pdf"  # llamado clientes
+    # la linea 26 es por si deseas descargar el pdf a tu computadora
+    # response['Content-Disposition'] = 'attachment; filename=%s' % pdf_name
+    response = HttpResponse(content_type='application/pdf')
+    buff = io.BytesIO()
+    doc = SimpleDocTemplate(buff,
+               pagesize=letter,
+               rightMargin=20,
+               leftMargin=20,
+               topMargin=20,
+               bottomMargin=20,
+               )
+    clientes = []
+    styles = getSampleStyleSheet()
+    header = Paragraph("Asociación Gissell", styles['Heading1'])
+    t = Paragraph("Listado de personas", styles['Heading1'])
+
+    clientes.append(header)
+    clientes.append(t)
+    headings = ('Id','Nombre', 'Apellido', 'Fecha de Nacimiento', 'Teléfono', 'Dirección')
+    allclientes = [(c.id, c.nombre, c.apellido, c.fecha_nacimiento, c.telefono, c.direccion) for c in Persona.objects.all()]
+    t = Table([headings] + allclientes, colWidths=[1 * cm, 4 * cm, 4 * cm, 4 * cm, 3 * cm, 3 * cm] )
+    t.setStyle(TableStyle(
+        [
+               ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.darkblue),
+               ('GRID', (0, 0), (5, -1), 1, colors.dodgerblue),
+               ('BACKGROUND', (0, 0), (-1, 0), colors.dodgerblue)
+        ]
+    ))
+    clientes.append(t)
+    doc.build(clientes)
+    response.write(buff.getvalue())
+    buff.close()
+    return response
+
+def generar_pdf_notas(request):
+    pdf_name = "Notas.pdf"  # llamado clientes
+    # la linea 26 es por si deseas descargar el pdf a tu computadora
+    # response['Content-Disposition'] = 'attachment; filename=%s' % pdf_name
+    response = HttpResponse(content_type='application/pdf')
+    buff = io.BytesIO()
+    doc = SimpleDocTemplate(buff,
+               pagesize=letter,
+               rightMargin=20,
+               leftMargin=20,
+               topMargin=20,
+               bottomMargin=20,
+               )
+    clientes = []
+    styles = getSampleStyleSheet()
+    header = Paragraph("Asociación Gissell", styles['Heading1'])
+    t = Paragraph("Listado de personas", styles['Heading1'])
+
+    clientes.append(header)
+    clientes.append(t)
+    headings = ('Id','Nombre', 'Nota', 'Unidad')
+    allclientes = [(c.id, c.tipo_persona_persona_id, c.nota, c.unidad_id) for c in Nota.objects.all()]
+    t = Table([headings] + allclientes, colWidths=[1 * cm, 6 * cm, 6 * cm, 6 * cm] )
+    t.setStyle(TableStyle(
+        [
+               ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.darkblue),
+               ('GRID', (0, 0), (5, -1), 1, colors.dodgerblue),
+               ('BACKGROUND', (0, 0), (-1, 0), colors.dodgerblue)
+        ]
+    ))
+    clientes.append(t)
+    doc.build(clientes)
+    response.write(buff.getvalue())
+    buff.close()
+    return response

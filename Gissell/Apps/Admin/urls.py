@@ -25,7 +25,7 @@ from .views import IndexView, PersonaLista, PersonaCreate, PersonaActualizar, Pe
     TipoDonacionCreate, TipoDonacionLista, TipoDonacionActualizar, TipoDonacionEliminar, CursoLista, CursoCreate, \
     CursoActualizar, CursoEliminar, AsignacionLista, AsignacionCreate, AsignacionActualizar, AsignacionEliminar, \
     NotaLista, NotaCreate, NotaActualizar, NotaEliminar, UnidadLista, UnidadCreate, UnidadActualizar, UnidadEliminar, \
-    report 
+    generar_pdf_personas, generar_pdf_notas
 
 app_name = 'Admin'
 
@@ -86,5 +86,7 @@ urlpatterns = [
     path('crear-unidad', login_required(UnidadCreate.as_view()), name='unidad_create'),
     path('actualizar-unidad/<int:pk>/', login_required(UnidadActualizar.as_view()), name='unidad_update'),
     path('eliminar-unidad/<int:pk>/', login_required(UnidadEliminar.as_view()), name='unidad_delete'),                          
-    path('report', login_required(report), name='reporte'),
+    # Reporte
+    path('reporte-personas', login_required(generar_pdf_personas), name='reporte_personas'),
+    path('reporte-notas', login_required(generar_pdf_notas), name='reporte_notas'),
 ]
